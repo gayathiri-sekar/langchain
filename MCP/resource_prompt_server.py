@@ -2,6 +2,8 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("promptandresource-mcp-demo")
 
+# Function that returns the bio
+@mcp.resource("docs://aboutme")
 def bharath_bio() -> str:
     return (
         "Bharath Thippireddy is a popular Udemy tech instructor and software architect "
@@ -11,6 +13,8 @@ def bharath_bio() -> str:
         "content creator on YouTube and LinkedIn."
     )
 
+# Function that returns the prompt
+@mcp.prompt("question")
 def ask_about_bharath(question: str, context: str) -> str:
     return (
         "System: You are a helpful assistant. Answer strictly using the provided context."
